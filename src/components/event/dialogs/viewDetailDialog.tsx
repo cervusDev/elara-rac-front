@@ -6,7 +6,7 @@ import {
     DialogContent,
 } from "@/components/ui/dialog"
 import { AlertDelete } from "../alert/deleteAlert"
-import type { EventResponse } from "@/service/event.service"
+import type { EventResponse } from "@/service/event"
 import { CalendarDays, MapPin, Users, Clock } from "lucide-react"
 
 interface IProps {

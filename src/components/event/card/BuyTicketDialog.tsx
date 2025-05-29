@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import type { EventResponse } from "@/service/event.service"
+import type { EventResponse } from "@/service/event"
 import { useBuyTicketMutation } from "@/hooks/ticket.hook"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog"
 

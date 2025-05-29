@@ -1,4 +1,4 @@
-import type { EventResponse } from "./event.service"
+import type { EventResponse } from "./event"
 
 export interface Ticket {
     id: number

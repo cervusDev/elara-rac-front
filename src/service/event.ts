@@ -11,10 +11,10 @@ export interface EventResponse {
   maxParticipants: number
 }
 
-interface EventFilters {
+export interface EventFilters {
   id?: string;
-  date?: string;
   title?: string;
+  date?: string;
 }
 
 
@@ -29,6 +29,25 @@ export interface CreateEventPayload {
 }
 
 export const eventService = {
+  async getAllEvents(): Promise<EventResponse[]> {
+    const token = localStorage.getItem("authToken")
+
+    const response = await fetch(import.meta.env.VITE_LOCAL_BASE_URL + "/events", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    if (!response.ok) {
+      const errorData = await response.json()
+      throw new Error(errorData.message || "Erro ao buscar eventos")
+    }
+
+    return await response.json()
+  },
+
   async fetchCreateEvent(data: CreateEventPayload): Promise<EventResponse> {
     const token = localStorage.getItem("authToken")
 
