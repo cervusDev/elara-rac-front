@@ -1,11 +1,12 @@
 import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import LoginPage from './app/login/page'
+import LoginPage from './app/auth.app'
 
-import { TicketPage } from './app/ticket'
-import { DashboardPage } from './app/event'
+import { TicketPage } from './app/ticket.app'
+import { DashboardPage } from './app/event.app'
 import { DashboardLayout } from './components/layout'
+import { AuthContextProvider } from './context/auth.context'
 
 import { MiddleWareProvider } from './provider/mid.provider'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
@@ -13,14 +14,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 const queryClient = new QueryClient()
 
-
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <MiddleWareProvider>
+      <AuthContextProvider>
         <LoginPage />
-      </MiddleWareProvider>
+      </AuthContextProvider>
     ),
   },
   {

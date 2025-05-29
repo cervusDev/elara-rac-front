@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { ticketService, type CreateTicketProps, type GetTicketResponse } from '@/service/ticket'
+import { ticketService, type CreateTicketProps, type GetTicketResponse } from '@/service/ticket.service'
 
 export const useTicketsQuery = (userId: number) => {
   return useQuery<GetTicketResponse>({

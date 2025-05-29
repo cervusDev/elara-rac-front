@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { BuyTicketDialog } from "./BuyTicketDialog"
-import type { EventResponse } from "@/service/event"
+import type { EventResponse } from "@/service/event.service"
 import { CalendarDays, Ticket, Pencil } from "lucide-react"
 import { ViewDetailDialog } from "../dialogs/viewDetailDialog"
 import { CreateOrUpdateEventDialog } from "../dialogs/createEventDialog"

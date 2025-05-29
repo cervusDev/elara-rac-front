@@ -10,7 +10,7 @@ import { PlusCircle } from "lucide-react"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import type { EventResponse } from "@/service/event"
+import type { EventResponse } from "@/service/event.service"
 import { useCreateEvent, useUpdateEvent } from "@/hooks/event.hook"
 
 interface IProps {

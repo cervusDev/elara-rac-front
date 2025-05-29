@@ -1,12 +1,5 @@
-import { eventService } from "@/service/event"
+import { eventService } from "@/service/event.service"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
-
-export const useGetAllEvents = () => {
-  return useQuery({
-    queryKey: ["events"],
-    queryFn: eventService.getAllEvents,
-  })
-}
 
 export const useCreateEvent = () => {
   const queryClient = useQueryClient()
@@ -48,3 +41,17 @@ export const useDeleteEvent = (id:number) => {
     },
   })
 }
+
+interface Filters {
+  id?: string;
+  date?: string;
+  title?: string;
+}
+
+export const useFilteredEvents = (filters: Filters) => {
+  return useQuery({
+    queryKey: ['events'],
+    queryFn: () => eventService.fetchEventsWithFilter(filters),
+    enabled: false,
+  });
+};

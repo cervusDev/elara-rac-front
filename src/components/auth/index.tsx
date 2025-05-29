@@ -3,9 +3,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { useNavigate } from 'react-router-dom'
-import { authService, type LoginData } from '@/service/auth'
+import { authService, type LoginData } from '@/service/auth.service'
 
-export function EnhancedLoginForm() {
+export function LoginForm() {
   const navigate = useNavigate()
   const { setIsLoadingLogin, isLoadingLogin } = useAuth()
 

@@ -1,4 +1,4 @@
-import { EnhancedLoginForm } from "@/components/auth";
+import { LoginForm } from "@/components/auth";
 
 export default function LoginPage() {
   return (
@@ -10,7 +10,7 @@ export default function LoginPage() {
             Acesse sua conta na nossa plataforma
           </p>
         </div>
-        <EnhancedLoginForm />
+        <LoginForm />
       </div>
     </div>
   )

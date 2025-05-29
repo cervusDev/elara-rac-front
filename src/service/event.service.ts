@@ -11,6 +11,13 @@ export interface EventResponse {
   maxParticipants: number
 }
 
+interface EventFilters {
+  id?: string;
+  date?: string;
+  title?: string;
+}
+
+
 export interface CreateEventPayload {
   date: string
   time: string
@@ -22,25 +29,6 @@ export interface CreateEventPayload {
 }
 
 export const eventService = {
-  async getAllEvents(): Promise<EventResponse[]> {
-    const token = localStorage.getItem("authToken")
-
-    const response = await fetch(import.meta.env.VITE_LOCAL_BASE_URL + "/events", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-
-    if (!response.ok) {
-      const errorData = await response.json()
-      throw new Error(errorData.message || "Erro ao buscar eventos")
-    }
-
-    return await response.json()
-  },
-
   async fetchCreateEvent(data: CreateEventPayload): Promise<EventResponse> {
     const token = localStorage.getItem("authToken")
 
@@ -97,5 +85,30 @@ export const eventService = {
       throw new Error(errorData.message || "Erro ao criar evento")
     }
 
-  }
+  },
+
+  async fetchEventsWithFilter(filters: EventFilters): Promise<EventResponse[]> {
+    const params = new URLSearchParams();
+    const token = localStorage.getItem('authToken');
+
+    if (filters.id) params.append('id', filters.id);
+    if (filters.date) params.append('date', filters.date);
+    if (filters.title) params.append('title', filters.title);
+
+    const url = `http://localhost:3000/events/filter?${params.toString()}`;
+
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Erro ao buscar eventos filtrados');
+    }
+
+    return response.json();
+  },
 }
