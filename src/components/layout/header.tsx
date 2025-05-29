@@ -9,14 +9,13 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Button } from "@/components/ui/button"
-import { Link, useNavigate } from "react-router-dom"
-import { Separator } from "@/components/ui/separator"
+import { Link } from "react-router-dom"
 import { useAuth } from "@/hooks/auth.hook"
+import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 
 export const Header = () => {
-    const navigate = useNavigate()
-    const { handleLogout } = useAuth()
+    const { handleLogout, user } = useAuth()
     return (
         <header className="flex items-center justify-between h-16 px-6 border-b border-gray-700 bg-gray-800">
             <div className="md:hidden">
@@ -29,7 +28,7 @@ export const Header = () => {
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="gap-2 hover:bg-gray-700">
-                            <span>Usuário</span>
+                            <span>{user?.name}</span>
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="w-56 bg-gray-800 border-gray-700">
