@@ -41,7 +41,7 @@ export const eventService = {
     return await response.json()
   },
 
-  async createEvent(data: CreateEventPayload): Promise<EventResponse> {
+  async fetchCreateEvent(data: CreateEventPayload): Promise<EventResponse> {
     const token = localStorage.getItem("authToken")
 
     const response = await fetch(import.meta.env.VITE_LOCAL_BASE_URL + "/event", {
@@ -64,7 +64,7 @@ export const eventService = {
   async fetchUpdateEvent(id: number, data: any): Promise<EventResponse> {
     const token = localStorage.getItem("authToken")
 
-    const response = await fetch(import.meta.env.VITE_LOCAL_BASE_URL + `/event/${id}` , {
+    const response = await fetch(import.meta.env.VITE_LOCAL_BASE_URL + `/event/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -79,5 +79,23 @@ export const eventService = {
     }
 
     return await response.json()
+  },
+
+  async fetchDeleteEvent(id: number): Promise<void> {
+    const token = localStorage.getItem("authToken")
+
+    const response = await fetch(import.meta.env.VITE_LOCAL_BASE_URL + `/event/${id}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }
+    })
+
+    if (!response.ok) {
+      const errorData = await response.json()
+      throw new Error(errorData.message || "Erro ao criar evento")
+    }
+
   }
 }

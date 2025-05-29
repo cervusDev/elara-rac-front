@@ -8,8 +8,8 @@ import {
 import { Button } from "@/components/ui/button"
 import { BuyTicketDialog } from "./BuyTicketDialog"
 import type { EventResponse } from "@/service/event"
-import { DialogEvent } from "../dialogs/viewDetailDialog"
 import { CalendarDays, Ticket, Pencil } from "lucide-react"
+import { ViewDetailDialog } from "../dialogs/viewDetailDialog"
 import { CreateOrUpdateEventDialog } from "../dialogs/createEventDialog"
 
 interface EventCardProps {
@@ -31,8 +31,8 @@ export function EventCard({ event }: EventCardProps) {
                 >
                     <Pencil className="w-4 h-4 text-gray-600" />
                 </button>
-
             </div>
+
             <div className="h-40 overflow-hidden">
                 <img
                     src={event.banner}
@@ -70,7 +70,7 @@ export function EventCard({ event }: EventCardProps) {
                     <Button onClick={() => setOpenBuyDialog(true)}>Comprar ingresso</Button>
                 </div>
 
-                <DialogEvent event={event} open={open} setOpen={setOpen} />
+                <ViewDetailDialog event={event} open={open} setOpen={setOpen} />
                 <BuyTicketDialog open={openBuyDialog} setOpen={setOpenBuyDialog} event={event} />
                 <CreateOrUpdateEventDialog
                     openEdit={openEditDialog}

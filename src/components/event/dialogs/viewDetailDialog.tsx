@@ -1,23 +1,26 @@
 
-import { CalendarDays, MapPin, Users, Clock } from "lucide-react"
 import {
     Dialog,
     DialogTitle,
     DialogHeader,
     DialogContent,
 } from "@/components/ui/dialog"
+import { AlertDelete } from "../alert/deleteAlert"
 import type { EventResponse } from "@/service/event"
+import { CalendarDays, MapPin, Users, Clock } from "lucide-react"
 
 interface IProps {
-    open: boolean
     setOpen: any
+    open: boolean
     event: EventResponse
 }
 
-export const DialogEvent = ({ open, setOpen, event }: IProps) => {
+export const ViewDetailDialog = ({ open, setOpen, event }: IProps) => {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogContent className="bg-white dark:bg-zinc-900">
+                <AlertDelete eventId={event?.id} title={event?.title} onClose={() => setOpen(false)} />
+
                 <DialogHeader>
                     <DialogTitle>{event.title}</DialogTitle>
                 </DialogHeader>

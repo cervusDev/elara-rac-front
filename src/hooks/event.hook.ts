@@ -12,7 +12,7 @@ export const useCreateEvent = () => {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: eventService.createEvent,
+    mutationFn: eventService.fetchCreateEvent,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["events"] });
     },
@@ -33,3 +33,18 @@ export const useUpdateEvent = (id: number) => {
     },
   });
 };
+
+export const useDeleteEvent = (id:number) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: () => eventService.fetchDeleteEvent(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["events"] });
+    },
+    onError: (error) => {
+      console.log("Erro ao deletar o evento:", error);
+      alert(error);
+    },
+  })
+}
