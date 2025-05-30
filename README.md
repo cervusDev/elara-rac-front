@@ -11,3 +11,10 @@ Para executar o projeto localmente utilizando Docker, siga os passos abaixo:
 
 ```bash
 docker-compose up -d --build
+```
+
+## 🌐 Ambiente de Produção
+O projeto está em produção e pode ser acessado pelo seguinte link:
+
+🔗 
+[Acesse o Projeto](https://elara-rac-front-production.up.railway.app)
