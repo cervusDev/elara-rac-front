@@ -114,7 +114,7 @@ export const eventService = {
     if (filters.date) params.append('date', filters.date);
     if (filters.title) params.append('title', filters.title);
 
-    const url = `http://localhost:3000/events/filter?${params.toString()}`;
+    const url = `${import.meta.env.VITE_LOCAL_BASE_URL}/events/filter?${params.toString()}`;
 
     const response = await fetch(url, {
       method: 'GET',
