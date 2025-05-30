@@ -35,7 +35,6 @@ export function LoginForm() {
       }
     }
   
-
   return (
     <div className="mx-auto max-w-sm space-y-8">
       <div className="text-center">
