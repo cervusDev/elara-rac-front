@@ -13,8 +13,6 @@ export function LoginForm() {
       e.preventDefault()
       setIsLoadingLogin(true)
   
-      console.log('caiu aqui')
-  
       const formData = new FormData(e.target as HTMLFormElement)
   
       const payload = {} as Record<string, any>

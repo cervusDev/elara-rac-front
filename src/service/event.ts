@@ -17,7 +17,6 @@ export interface EventFilters {
   date?: string;
 }
 
-
 export interface CreateEventPayload {
   date: string
   time: string

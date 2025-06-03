@@ -43,7 +43,6 @@ export const useDeleteEvent = (id:number) => {
       queryClient.invalidateQueries({ queryKey: ["events"] });
     },
     onError: (error) => {
-      console.log("Erro ao deletar o evento:", error);
       alert(error);
     },
   })
